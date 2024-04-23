@@ -1,9 +1,10 @@
-int main() {
+int main()
+{
   { // original code.
     int a[5];
     a[0] = 0;
-    for(int i = 1; i < 5; ++i)
-      a[i] = a[i-1] + 1;
+    for (int i = 1; i < 5; ++i)
+      a[i] = a[i - 1] + 1;
   }
 
   { // loop unrolled code.

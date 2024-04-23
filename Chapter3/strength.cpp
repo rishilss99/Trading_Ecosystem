@@ -1,6 +1,7 @@
 #include <cstdint>
 
-int main() {
+int main()
+{
   const auto price = 10.125; // prices are like: 10.125, 10.130, 10.135...
   constexpr auto min_price_increment = 0.005;
   [[maybe_unused]] int64_t int_price = 0;

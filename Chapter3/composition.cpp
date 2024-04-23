@@ -1,24 +1,29 @@
 #include <cstdio>
 #include <vector>
 
-struct Order {
+struct Order
+{
   int id;
   double price;
 };
 
-class InheritanceOrderBook : public std::vector<Order> {
+class InheritanceOrderBook : public std::vector<Order>
+{
 };
 
-class CompositionOrderBook {
+class CompositionOrderBook
+{
   std::vector<Order> orders_;
 
 public:
-  auto size() const noexcept {
+  auto size() const noexcept
+  {
     return orders_.size();
   }
 };
 
-int main() {
+int main()
+{
   InheritanceOrderBook i_book;
   CompositionOrderBook c_book;
 

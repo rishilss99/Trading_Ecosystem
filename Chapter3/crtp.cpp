@@ -1,43 +1,53 @@
 #include <cstdio>
 
-class RuntimeExample {
+class RuntimeExample
+{
 public:
-  virtual void placeOrder() {
+  virtual void placeOrder()
+  {
     printf("RuntimeExample::placeOrder()\n");
   }
 };
 
-class SpecificRuntimeExample : public RuntimeExample {
+class SpecificRuntimeExample : public RuntimeExample
+{
 public:
-  void placeOrder() override {
+  void placeOrder() override
+  {
     printf("SpecificRuntimeExample::placeOrder()\n");
   }
 };
 
-template<typename actual_type>
-class CRTPExample {
+template <typename actual_type>
+class CRTPExample
+{
 public:
-  void placeOrder() {
+  void placeOrder()
+  {
     static_cast<actual_type *>(this)->actualPlaceOrder();
   }
 
-  void actualPlaceOrder() {
+  void actualPlaceOrder()
+  {
     printf("CRTPExample::actualPlaceOrder()\n");
   }
 };
 
-class SpecificCRTPExample : public CRTPExample<SpecificCRTPExample> {
+class SpecificCRTPExample : public CRTPExample<SpecificCRTPExample>
+{
 public:
-  void actualPlaceOrder() {
+  void actualPlaceOrder()
+  {
     printf("SpecificCRTPExample::actualPlaceOrder()\n");
   }
 };
 
-int main(int, char **) {
+int main(int, char **)
+{
   RuntimeExample *runtime_example = new SpecificRuntimeExample();
   runtime_example->placeOrder();
 
-  CRTPExample <SpecificCRTPExample> crtp_example;
+  CRTPExample<SpecificCRTPExample> crtp_example;
   crtp_example.placeOrder();
 
   return 0;
